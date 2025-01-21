@@ -126,10 +126,30 @@
             margin: 15px 0;
             padding: 10px;
             border-radius: 5px;
+            cursor: pointer;
         }
 
         .bank-account:hover {
             text-decoration: underline;
+        }
+
+        .copy-message {
+            display: none;
+            color: var(--primary-color);
+            font-size: 0.9em;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .copy-message.show {
+            display: block;
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         @media (max-width: 768px) {
@@ -193,13 +213,16 @@
             <div class="support-section">
                 <h2>Podporte projekt</h2>
                 <p>Ak sa vám aplikácia páči a chcete podporiť jej ďalší vývoj, môžete tak urobiť pomocou príspevku na môj účet:</p>
-                <a href="bank://pay?iban=SK7083605207004203566176" class="bank-account">
+                <div onclick="copyIBAN()" class="bank-account">
                     SK70 8360 5207 0042 0356 6176
-                </a>
+                </div>
+                <div id="copyMessage" class="copy-message">
+                    IBAN bol skopírovaný do schránky, môžete ho vložiť vo vašom internet bankingu. Ďakujem!
+                </div>
                 <div class="qr-code">
                     <img src="qr-code.png" alt="QR kód pre platbu" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
-                <p style="font-weight: bold; font-size: 1.2em; ">Ďakujem!</p>
+                <p style="font-weight: bold; font-size: 1.2em;">Ďakujem!</p>
             </div>
         </div>
     </div>
@@ -212,6 +235,17 @@
             const mailtoLink = `mailto:jozef.olsovsky@gmail.com?subject=Cista hlava&body=Email: ${email}%0D%0ASprava: ${message}`;
             window.location.href = mailtoLink;
             event.target.reset();
+        }
+
+        function copyIBAN() {
+            const iban = "SK70 8360 5207 0042 0356 6176";
+            navigator.clipboard.writeText(iban).then(() => {
+                const message = document.getElementById('copyMessage');
+                message.classList.add('show');
+                setTimeout(() => {
+                    message.classList.remove('show');
+                }, 3000);
+            });
         }
     </script>
 </body>
