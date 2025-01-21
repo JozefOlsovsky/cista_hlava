@@ -118,8 +118,8 @@
         }
 
         .bank-account {
-            display: block;
-            color: var(--primary-color);
+            display: inline-block;
+            color: var(--primary-color) !important;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2em;
@@ -127,15 +127,14 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            -webkit-text-size-adjust: none;
-            -webkit-touch-callout: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .bank-account span {
-            pointer-events: none;
-            white-space: nowrap;
+            display: inline;
         }
 
         .bank-account:hover {
@@ -197,6 +196,11 @@
             .logo {
                 margin: 20px;
             }
+
+            .bank-account {
+                font-size: 1em;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -222,9 +226,9 @@
             <div class="support-section">
                 <h2>Podporte projekt</h2>
                 <p>Ak sa vám aplikácia páči a chcete podporiť jej ďalší vývoj, môžete tak urobiť pomocou príspevku na môj účet:</p>
-                <div onclick="copyIBAN()" class="bank-account">
-                    <span>SK70 8360 5207 0042 0356 6176</span>
-                </div>
+                <a href="#" onclick="copyIBAN(event)" class="bank-account">
+                    SK70 8360 5207 0042 0356 6176
+                </a>
                 <div id="copyMessage" class="copy-message">
                     IBAN bol skopírovaný do schránky, môžete ho vložiť vo vašom internet bankingu. Ďakujem!
                 </div>
@@ -246,7 +250,8 @@
             event.target.reset();
         }
 
-        function copyIBAN() {
+        function copyIBAN(event) {
+            event.preventDefault();
             const iban = "SK70 8360 5207 0042 0356 6176";
             navigator.clipboard.writeText(iban).then(() => {
                 const message = document.getElementById('copyMessage');
