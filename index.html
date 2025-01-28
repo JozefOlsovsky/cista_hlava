@@ -25,14 +25,10 @@
             box-sizing: border-box;
         }
 
-        .language-switch {
-            display: none;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0px 20px;
             text-align: center;
             width: 100%;
         }
@@ -40,7 +36,7 @@
         .logo {
             width: 200px;
             height: 200px;
-            margin: 20px;
+            margin: 10px;
         }
 
         .header {
@@ -63,23 +59,20 @@
             line-height: 1;
         }
 
-        .header p {
-            font-size: 1.5em;
-            color: #555;
-            margin: 0;
-            line-height: 1;
+        h2 {
+            padding-top: 5px;
         }
-
         .content {
-            margin: 10px 0;
+            margin: 0;
+            padding: 0;
         }
 
         .contact-form {
             background: #eee;
-            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+            padding-bottom: 10px;
             text-align: center;
         }
 
@@ -95,7 +88,7 @@
 
         .support-section {
             width: 100%;
-            padding: 30px;
+            
             background: white;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -107,14 +100,6 @@
             height: 200px;
             margin: 20px auto;
             background: #ddd;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .flex-container {
-            margin-top: 10px;
         }
 
         .bank-account {
@@ -162,22 +147,9 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 0px 20px;
                 width: 100%;
                 overflow-x: hidden;
-            }
-
-            .flex-container {
-                flex-direction: column;
-                margin: 20px 0;
-                padding: 0 20px;
-            }
-            
-            .contact-form,
-            .support-section {
-                width: 100%;
-                margin: 20px 0;
-                padding: 20px;
             }
 
             .header-container {
@@ -212,12 +184,19 @@
                 <img src="logo.png" alt="Čistá hlava logo" class="logo">
                 <div>
                     <h1>Čistá hlava</h1>
-                    <p style="font-size: 1.5em; color: #555; margin-top: 5px;">podporná stránka aplikácie</p>
+                    <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+                        <p style="font-size: 1.5em; color: #555; margin-top: 5px; margin-bottom: 5px;">podporná stránka aplikácie</p>
+                        <a href="https://apps.apple.com/app/čistá-hlava/id6741072660" target="_blank" style="text-decoration: none;">
+                            <img src="app-store-badge-sk.svg" 
+                                 alt="Stiahnuť na App Store" 
+                                 style="height: 40px; vertical-align: middle;">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div id="sk-content">
+        <div class="content">
             <div class="contact-form">
                 <h2>Kontakt</h2>
                 <p style="color: #555; margin: 15px 0;">Ak máte návrh na vylepšenie alebo chcete nahlásiť nejaký bug, napíšte mi prosím. Ďakujem!</p>
